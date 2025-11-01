@@ -1,5 +1,6 @@
 // src/components/TaskForm.jsx
 import React, { useState } from "react";
+import { API_BASE_URL } from "../config";
 
 function TaskForm({ onTaskAdded }) {
   const [formData, setFormData] = useState({
@@ -16,7 +17,7 @@ function TaskForm({ onTaskAdded }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch("http://localhost:3000/tasks", {
+    const response = await fetch(`${API_BASE_URL}/tasks`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ ...formData, status: "Open" }),

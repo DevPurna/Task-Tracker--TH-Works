@@ -1,5 +1,6 @@
 // src/components/TaskList.jsx
 import React, { useEffect, useState } from "react";
+import { API_BASE_URL } from "../config";
 
 function TaskList() {
   const [tasks, setTasks] = useState([]);
@@ -7,7 +8,7 @@ function TaskList() {
 
   const fetchTasks = async (query = "") => {
     try {
-      const response = await fetch(`http://localhost:3000/tasks${query}`);
+      const response = await fetch(`${API_BASE_URL}/tasks${query}`);
       const data = await response.json();
 
       if (Array.isArray(data)) {
